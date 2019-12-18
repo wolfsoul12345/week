@@ -1,0 +1,18 @@
+server:
+  port: 888
+spring:
+  datasource:
+    url: jdbc:mysql://47.107.176.154:3306/week?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: wolfsoul
+    driver-class-name: com.mysql.jdbc.Driver
+logging:
+  level:
+   com.dream.week.mapper: debug
+jwt:
+  config:
+    key: dream
+    ttl: 86400000
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
