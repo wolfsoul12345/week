@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -22,4 +23,20 @@ public class DemoController {
         model.addAttribute("demo",demos);
         return "index";
     }
+
+    //获取
+    @GetMapping("/demo")
+    public String getDemo1(Model model){
+        List<Demo> demos = demoService.getDemo1();
+        model.addAttribute("demo",demos);
+        return "demos";
+    }
+
+    //新增
+    @PostMapping("demo")
+    public String addDemo(Demo demo){
+        demoService.addDemo(demo);
+        return "demos";
+    }
+
 }

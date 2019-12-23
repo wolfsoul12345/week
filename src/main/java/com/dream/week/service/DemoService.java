@@ -16,4 +16,12 @@ public class DemoService {
     public List<Demo> getDemo() {
         return demoMapper.selectAll();
     }
+
+    public List<Demo> getDemo1() {
+       return demoMapper.selectAll();
+    }
+
+    public void addDemo(Demo demo) {
+        demoMapper.insert(demo);
+    }
 }
