@@ -16,7 +16,6 @@ public class DemoController {
 
     @Autowired
     private DemoService demoService;
-
     @GetMapping("/demo")
     public String getDemo(Model model){
         List<Demo> demos = demoService.getDemo();
