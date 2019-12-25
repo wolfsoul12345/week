@@ -16,7 +16,6 @@ public class DemoController {
 
     @Autowired
     private DemoService demoService;
-
     @GetMapping("/demo")
     public String getDemo(Model model){
         List<Demo> demos = demoService.getDemo();
@@ -24,13 +23,7 @@ public class DemoController {
         return "index";
     }
 
-    //获取
-    @GetMapping("/demo")
-    public String getDemo1(Model model){
-        List<Demo> demos = demoService.getDemo1();
-        model.addAttribute("demo",demos);
-        return "demos";
-    }
+
 
     //新增
     @PostMapping("demo")
