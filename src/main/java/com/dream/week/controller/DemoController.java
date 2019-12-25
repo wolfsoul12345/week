@@ -24,13 +24,7 @@ public class DemoController {
         return "index";
     }
 
-    //获取
-    @GetMapping("/demo")
-    public String getDemo1(Model model){
-        List<Demo> demos = demoService.getDemo1();
-        model.addAttribute("demo",demos);
-        return "demos";
-    }
+
 
     //新增
     @PostMapping("demo")

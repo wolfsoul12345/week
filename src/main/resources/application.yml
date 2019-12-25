@@ -16,3 +16,5 @@ jwt:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+thymeleaf:
+  cache: false
