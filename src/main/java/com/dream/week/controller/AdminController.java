@@ -21,7 +21,7 @@ public class AdminController {
     private AdminService adminService;
     @Autowired
     private UserService userService;
-
+//
     @PostMapping("find_info")
     public String find_info(@RequestParam Map<String,Object> map , Model model){
         List<RentInfo> info = adminService.find_info(map);
