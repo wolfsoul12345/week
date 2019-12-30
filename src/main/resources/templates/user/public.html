@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>发布信息</title>
+    <link th:href="@{/css/user/public.css}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<img th:src="@{/img/header.jpg}" width="1519px" height="150px">
+<div class="header">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link " th:href="@{'to_main?userName='+${userName}}" style="color: #000">所有租房信息</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" th:href="@{to_public}" style="color: #000">发布信息</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{'to_my_info?userName='+${userName}}" style="color: #000">密码修改</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{'to_my_public?userName='+${userName}}" style="color: #000">我的发布</a>
+        </li>
+    </ul>
+</div>
+<div class="body_container">
+    <div class="public_main">
+        <form action="public" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="hidden" name="user" class="form-control" id="user" aria-describedby="emailHelp"  th:value="${userName}">
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="type" class="form-control"  aria-describedby="emailHelp"  th:value="1">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">简介</label>
+                <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">详细介绍</label>
+                <input type="text" name="content" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">电话</label>
+                <input type="text" name="phone" class="form-control" id="phone">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">地址</label>
+                <input type="text" name="address" class="form-control" id="address">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">面积</label>
+                <input type="text" name="area" class="form-control" id="area">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">租金(元/月)</label>
+                <input type="text" name="cost" class="form-control" id="cost">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlFile1">房屋图片</label>
+                <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+            <button type="submit" class="btn btn-primary">发布</button>
+            <br><br><br>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

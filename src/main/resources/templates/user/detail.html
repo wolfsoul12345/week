@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>详情</title>
+    <link th:href="@{/css/user/detail.css}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="header_title"></div>
+    <div class="detail_container">
+        <img th:src="@{${detail.img}}" width="500px" height="300px">
+        <span th:text="'租金:'+${detail.cost}+'元/月'" style="color: red ; font-size: 20px "></span><br>
+        <div class="detail_info">
+            <p th:text="'简介:'+${detail.title}" ></p>
+        </div>
+        <div class="detail_info">
+            <p th:text="'详细内容:'+${detail.content}" style="width: 500px ;text-align: left" ></p>
+        </div>
+
+        <div class="detail_info">
+            <p th:text="'房屋面积:'+${detail.area}" ></p>
+        </div>
+        <div class="detail_info">
+            <p th:text="'地址:'+${detail.address}" ></p>
+        </div>
+        <div class="detail_info">
+            <p th:text="'发布时间:'+${#dates.format(detail.date,'yyyy-MM-dd')}"></p>
+        </div>
+        <div class="detail_info">
+            <p th:text="'联系方式:'+${detail.phone}"  ></p>
+        </div>
+        <div class="detail_info">
+            <p th:text="'联系人:'+${detail.user}"  ></p>
+        </div>
+    </div>
+</body>
+</html>

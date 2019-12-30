@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>中介审核</title>
+    <link th:href="@{/css/admin/check.css}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class="header">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link " th:href="@{to_admin_main}" style="color: #000">信息管理</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" th:href="@{#}" style="color: #000">中介审核</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " th:href="@{to_user_info}" style="color: #000">查询用户信息</a>
+        </li>
+    </ul>
+</div>
+
+    <table class="table" style="margin-top: 50px">
+        <thead>
+        <tr>
+            <th scope="col">用户名</th>
+            <th scope="col">操作</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="data:${no_check_users}">
+            <td th:text="${data.userName}"></td>
+            <td>
+                <a th:href="@{'admin_check?status=1&userName='+${data.userName}}">同意</a>
+                <a th:href="@{'admin_check?status=2&userName='+${data.userName}}">拒绝</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</body>
+</html>

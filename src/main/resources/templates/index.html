@@ -1,13 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="css/login.css">
+    <title>登录</title>
+    <link th:href="@{/css/login.css}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="login">
+<div class="login">
+    <p>登录</p>
+    <p class="error_msg" th:text="${msg}"></p>
+    <form action="login" method="POST">
+        <form>
+            <div class="form-group">
+                <input type="text" name="userName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="用户名">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="密码">
+            </div>
 
-    </div>
+            <button type="submit" class="btn btn-primary" >登录</button>
+            <a class="btn btn-primary" th:href="@{/to_register}" style="margin-left: 50px ; width: 58px ;height: 38px" role="button">注册</a>
+        </form>
+
+    </form>
+
+</div>
 </body>
 </html>

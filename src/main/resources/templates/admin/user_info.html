@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户信息</title>
+    <link th:href="@{/css/admin/main.css}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="header">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link " th:href="@{#}" style="color: #000">信息管理</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " th:href="@{to_check}" style="color: #000">中介审核</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" th:href="@{to_user_info}" style="color: #000">查询用户信息</a>
+        </li>
+    </ul>
+</div>
+
+<table class="table" style="margin-top: 50px">
+    <thead>
+    <tr>
+        <th scope="col">用户名</th>
+        <th scope="col">密码</th>
+        <th scope="col">邮箱</th>
+        <th scope="col">电话号码</th>
+        <th scope="col">角色</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="data:${data}">
+        <td th:text="${data.userName}"></td>
+        <td th:text="${data.password}"></td>
+        <td th:text="${data.email}"></td>
+        <td th:text="${data.phone}"></td>
+        <td th:if="${data.role==1}">普通用户</td>
+        <td th:if="${data.role==2}">中介机构</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

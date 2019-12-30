@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理首页</title>
+    <link th:href="@{/css/admin/main.css}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="header">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" th:href="@{#}" style="color: #000">信息管理</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " th:href="@{to_check}" style="color: #000">中介审核</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " th:href="@{to_user_info}" style="color: #000">查询用户信息</a>
+        </li>
+    </ul>
+</div>
+<br><br>
+   <div style="height: 50px">
+       <form action="find_info" method="post">
+           <div class="form-group" style="width: 200px ; float: left ;margin-left: 25px">
+               <input name="userName" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="用户">
+           </div>
+           <div class="form-group" style="width: 200px ;float: left ;margin-left: 25px" >
+               <input name="startDate" type="date" class="form-control"  aria-describedby="emailHelp" placeholder="开始时间">
+           </div>
+           <div class="form-group" style="width: 200px ; float: left ; margin-left: 25px" >
+               <input name="endDate" type="date" class="form-control"  aria-describedby="emailHelp" placeholder="结束时间">
+           </div>
+           <div class="form-group" style="width: 200px ; float: left ; margin-left: 25px" >
+               <button type="submit" class="btn btn-primary">查找</button>
+           </div>
+       </form>
+   </div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">发布者</th>
+        <th scope="col">联系方式</th>
+        <th scope="col">房屋简介</th>
+        <th scope="col">租金(元/月)</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="data:${data}">
+        <td th:text="${data.user}"></td>
+        <td th:text="${data.phone}"></td>
+        <td th:text="${data.title}"></td>
+        <td th:text="${data.cost}"></td>
+        <td><a th:href="@{'admin_delete?id='+${data.id}}">删除</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+
+        <li class="page-item" th:if="${this_page != 1 }">
+            <a class="page-link" th:href="@{'admin_page_info?page='+${this_page-1}}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+
+        <div th:each="count:${#numbers.sequence(1,total_page)}" style="border: none">
+            <li class="page-item active"  th:if="${count}==${this_page}" >
+                <a class="page-link" th:href="@{'admin_page_info?page='+${count}}" th:text="${count}"></a>
+            </li>
+            <li class="page-item" th:if="${count}!=${this_page}">
+                <a class="page-link" th:href="@{'admin_page_info?page='+${count}}" th:text="${count}"></a>
+            </li>
+
+        </div>
+
+        <li th:if="${this_page != total_page}" class="page-item">
+            <a class="page-link" th:href="@{'admin_page_info?page='+${this_page+1}}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>

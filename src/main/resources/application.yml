@@ -6,6 +6,11 @@ spring:
     username: root
     password: wolfsoul
     driver-class-name: com.mysql.jdbc.Driver
+  thymeleaf:
+    cache: false
+  servlet:
+    multipart:
+      max-file-size: 2MB # 限制文件上传的大小
 logging:
   level:
    com.dream.week.mapper: debug
@@ -16,5 +21,3 @@ jwt:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
-thymeleaf:
-  cache: false

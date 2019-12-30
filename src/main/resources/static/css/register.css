@@ -1,58 +1,62 @@
-.login{
+.register{
     width: 500px;
     height: 300px;
+    margin: 0 auto;
     margin-top: 100px;
-    margin-left: 1000px;
     color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 body{
     text-align: center;
     background: url("../img/bg_img.jpg") ;
     background-size: cover;
 }
-.login p{
+.register p{
     font-size: 20px;
     font-weight: 500;
     margin-top: 50px;
 }
-.login a{
+.register a{
     text-decoration: none;
     color: #000;
 }
 
-
-.login a{
-    width: 50px;
-    height: 30px;
-    border-radius: 5px;
-    margin: 0 auto;
-    color: #fff;
-}
-
-.login a:hover{
-    text-decoration: none;
-    color: #fff;
-}
-.login input{
+.register select{
     width: 250px;
     height: 36px;
     border-radius: 5px;
     border: #d5d5d5 1px solid ;
 }
-.login .login-button{
+.register .register-button{
     width: 50px;
     height: 30px;
-    cursor:pointer;
 }
-.login .error_msg{
+.register .error_msg{
     color: red;
     font-size: 16px;
     margin-top: 10px;
 }
+.register  .radio_button{
+    width: 20px;
+    height: 20px;
+}
 
-.login input::-webkit-input-placeholder {
+.register p{
+    color: red;
+}
+.register .message{
+    display: none;
+    color: red;
+}
+.register input::-webkit-input-placeholder {
     color: #ccc;
 }
+.register .confirm_password{
+    height: 60px;
+}
+
 input::-moz-input-placeholder {
     color: #ccc;
 }

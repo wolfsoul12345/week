@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link href="/css/register.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/register.js}"></script>
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body>
+<div class="register">
+
+    <form action="register" method="POST" style="width: 300px">
+        <div class="form-group">
+            <input name="userName" type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="请输入用户名" onblur="user_exist()">
+            <span class="user_exist"></span>
+        </div>
+
+        <br>
+        <div class="form-group">
+            <input name="password" type="password" class="form-control" id="password" placeholder="请输入密码">
+        </div>
+        <br>
+        <div class="form-group confirm_password">
+            <input type="password" class="form-control" id="confirm_password" placeholder="请确认密码" onblur="confirm_pass()">
+            <span class="message">两次输入密码不一样请重新输入</span>
+        </div>
+
+        <div class="form-group">
+            <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="请输入邮箱" >
+        </div>
+        <br/>
+        <div class="form-group">
+            <input name="phone" type="text" class="form-control" id="phone" aria-describedby="emailHelp" placeholder="请输入电话号码" >
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="role" id="inlineRadio1" value="1">
+            <label class="form-check-label" for="inlineRadio1">用户</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="role" id="inlineRadio2" value="2">
+            <label class="form-check-label" for="inlineRadio2">中介机构</label>
+        </div>
+        <br><br>
+        <button type="submit" class="btn btn-primary" id="register">注册</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+.public_main{
+    margin: 0 auto;
+    width: 300px;
+    margin-top: 200px;
+}
+.header{
+    background-color: #FFDD55;
+}
+.body_container{
+    height: 1522px;
+    width: 1519px;
+    background: url("../../img/main_bg.jpg") no-repeat ;
+    background-size: cover;
+    float: left;
+}
