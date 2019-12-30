@@ -21,7 +21,7 @@ public class RentInfoController {
     @Autowired
     private RentInfoService rentinfoService ;
 
-    //发布租房信息
+    //发布租房信息123
     @PostMapping("public")
     public String add(RentInfo rentInfo , MultipartFile file, Model model){
         rentinfoService.addRentInfo(rentInfo , file);
