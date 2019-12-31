@@ -33,13 +33,14 @@ public class RentInfoController {
         return "user/main";
     }
 
-    //获取信息
+    //获取详细信息
     @GetMapping("/detail")
     public String getDetail(Model model , @RequestParam Map<String,Object> map){
         Integer id = Integer.valueOf(String.valueOf(map.get("id")));
         model.addAttribute("detail",rentinfoService.getDetail(id));
         return "user/detail";
     }
+
     @GetMapping("/delete")
     public String delete(Model model , @RequestParam Map<String,Object> map){
         String userName = (String) map.get("userName");

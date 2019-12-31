@@ -31,10 +31,9 @@ public class UserController {
             return "index";
         }else if (status == 1 ){
             PageResult<RentInfo> rentInfo = rentinfoService.getRentInfo();
-
             model.addAttribute("data",rentInfo.getItems());
             model.addAttribute("this_page",1);
-            model.addAttribute("total_page",rentInfo.getTotalData()/10+1);
+            model.addAttribute("total_page",rentInfo.getTotalData()/10+rentInfo.getTotalData()/10==0?0:1);
             model.addAttribute("user",user.getUserName());
             return "admin/main";
         }else if (status == 3 ) {
@@ -42,17 +41,16 @@ public class UserController {
             return "index";
         }else {
             PageResult<RentInfo> rentInfo = rentinfoService.getRentInfo();
-
             model.addAttribute("data",rentInfo.getItems());
             model.addAttribute("this_page",1);
-            model.addAttribute("total_page",rentInfo.getTotalData()/10+1);
+            model.addAttribute("total_page",rentInfo.getTotalData()/10+rentInfo.getTotalData()/10==0?0:1);
             model.addAttribute("user",user.getUserName());
             return "user/main";
         }
     }
     //注册
     @PostMapping("/register")
-    public String  getUser(Model model , User user ){
+    public String  getUser( User user ){
         int status = userService.register(user);
         if (status == -1) {
             return "register";
@@ -64,7 +62,6 @@ public class UserController {
     @GetMapping("user_exist")
     @ResponseBody
     public Map<String,Object> userExist( @RequestParam Map<String,Object> map){
-        System.out.println(map);
         String userName = (String) map.get("userName");
         String s = userService.userExist(userName);
         HashMap<String, Object> map1 = new HashMap<>();

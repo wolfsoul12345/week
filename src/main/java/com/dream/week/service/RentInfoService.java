@@ -35,7 +35,7 @@ public class RentInfoService {
     public void addRentInfo(RentInfo rentInfo ,MultipartFile file){
         rentInfo.setImg("image/"+file.getOriginalFilename());
         try {
-            UpLoadUtils.upload( file,rentInfo.getImg(),"C:/img");
+            UpLoadUtils.upload( file,file.getOriginalFilename(),"C:/img");
         } catch (IOException e) {
             e.printStackTrace();
         }

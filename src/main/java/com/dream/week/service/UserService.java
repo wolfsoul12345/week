@@ -19,7 +19,7 @@ public class UserService {
     }
 
 
-    public int login(@RequestParam User user) {
+    public int login( User user) {
         Example example = new Example(User.class);
         example.createCriteria().andEqualTo("userName",user.getUserName()).andEqualTo("password",user.getPassword());
         List<User> users = userMapper.selectByExample(example);
@@ -33,13 +33,19 @@ public class UserService {
     }
 
     public int register(User user) {
+//        new查询条件
         Example example = new Example(User.class);
+//        创建查询
         example.createCriteria().andEqualTo("userName",user.getUserName());
+//        调用tkmybatis查询是否存在此用户名
         List<User> users = userMapper.selectByExample(example);
+
         if (users.size()>0) return -1;
+
         else {
             if (user.getRole() == 2 ) user.setStatus(0);
         }
+
         userMapper.insert(user);
         return  1;
     }
