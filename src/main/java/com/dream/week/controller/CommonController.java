@@ -38,7 +38,6 @@ public class CommonController {
         String userName = (String) map.get("userName");
         model.addAttribute("userName",userName);
         PageResult<RentInfo> rentInfo = rentinfoService.getRentInfo();
-
         model.addAttribute("data",rentInfo.getItems());
         model.addAttribute("this_page",1);
         model.addAttribute("total_page",rentInfo.getTotalData()/10+1);
