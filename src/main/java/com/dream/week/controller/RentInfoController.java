@@ -28,7 +28,7 @@ public class RentInfoController {
         PageResult<RentInfo> rentInfos = rentinfoService.getRentInfo();
         model.addAttribute("data",rentInfos.getItems());
         model.addAttribute("this_page",1);
-        model.addAttribute("total_page",rentInfos.getTotalData()/10+rentInfos.getTotalData()/10==0?0:1);
+        model.addAttribute("total_page",rentInfos.getTotalData()/10+(rentInfos.getTotalData()/10==0?0:1));
         model.addAttribute("user",rentInfo.getUser());
         return "user/main";
     }
@@ -59,7 +59,7 @@ public class RentInfoController {
         PageResult<RentInfo> rentInfo = rentinfoService.getRentInfo();
         model.addAttribute("data",rentInfo.getItems());
         model.addAttribute("this_page",1);
-        model.addAttribute("total_page",rentInfo.getTotalData()/10+rentInfo.getTotalData()/10==0?0:1);
+        model.addAttribute("total_page",rentInfo.getTotalData()/10+(rentInfo.getTotalData()/10==0?0:1));
         return "admin/main";
     }
 
@@ -68,7 +68,7 @@ public class RentInfoController {
         PageResult<RentInfo> pageInfo = rentinfoService.getPageInfo(page);
         model.addAttribute("data",pageInfo.getItems());
         model.addAttribute("this_page",page);
-        model.addAttribute("total_page",pageInfo.getTotalData()/10+pageInfo.getTotalData()/10==0?0:1);
+        model.addAttribute("total_page",pageInfo.getTotalData()/10+(pageInfo.getTotalData()/10==0?0:1));
         return "/user/main";
     }
     @GetMapping("admin_page_info")
@@ -76,7 +76,7 @@ public class RentInfoController {
         PageResult<RentInfo> pageInfo = rentinfoService.getPageInfo(page);
         model.addAttribute("data",pageInfo.getItems());
         model.addAttribute("this_page",page);
-        model.addAttribute("total_page",pageInfo.getTotalData()/10+pageInfo.getTotalData()/10==0?0:1);
+        model.addAttribute("total_page",pageInfo.getTotalData()/10+(pageInfo.getTotalData()/10==0?0:1));
         return "/admin/main";
     }
 

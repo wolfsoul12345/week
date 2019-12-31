@@ -48,7 +48,7 @@ public class CommonController {
         model.addAttribute("data",rentInfo.getItems());
         //this_page存放当前页
         model.addAttribute("this_page",1);
-        model.addAttribute("total_page",rentInfo.getTotalData()/10+rentInfo.getTotalData()/10==0?0:1);
+        model.addAttribute("total_page",rentInfo.getTotalData()/10+(rentInfo.getTotalData()/10==0?0:1));
         model.addAttribute("user",userName);
         return "user/main";
     }
@@ -90,7 +90,7 @@ public class CommonController {
         PageResult<RentInfo> rentInfo = rentinfoService.getRentInfo();
         model.addAttribute("data",rentInfo.getItems());
         model.addAttribute("this_page",1);
-        model.addAttribute("total_page",rentInfo.getTotalData()/10+rentInfo.getTotalData()/10==0?0:1);
+        model.addAttribute("total_page",rentInfo.getTotalData()/10+(rentInfo.getTotalData()/10==0?0:1));
         return "admin/main";
     }
     @RequestMapping("to_user_info")
