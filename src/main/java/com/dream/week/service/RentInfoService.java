@@ -20,10 +20,15 @@ public class RentInfoService {
     @Autowired
     private RentInfoMapper rentInfoMapper;
 
+    //获取所有租房信息
     public PageResult<RentInfo> getRentInfo(){
+        //调用分页助手开启分页 第一页 10条
         PageHelper.startPage(1,10);
+        //调用tkMyBatis的查询所有方法
         List<RentInfo> rentInfos = rentInfoMapper.selectAll();
+        //new PageInfo 将查询出来的数据传到pageInfo
         PageInfo<RentInfo> pageInfo = new PageInfo<>(rentInfos);
+        //返回PageResult 包含总条数和数据
         return new PageResult<>(pageInfo.getTotal(),pageInfo.getList());
     }
 
@@ -41,8 +46,10 @@ public class RentInfoService {
         return rentInfoMapper.selectByPrimaryKey(id);
     }
 
+    //获取我的发布
     public List<RentInfo> getMyPublic(String userName) {
         Example example = new Example(RentInfo.class);
+        //建立查询条件
         example.createCriteria().andEqualTo("user",userName);
         return rentInfoMapper.selectByExample(example);
     }
