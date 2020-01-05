@@ -33,7 +33,7 @@ public class UserController {
             PageResult<RentInfo> rentInfo = rentinfoService.getRentInfo();
             model.addAttribute("data",rentInfo.getItems());
             model.addAttribute("this_page",1);
-            model.addAttribute("total_page",rentInfo.getTotalData()/10+(rentInfo.getTotalData()/10==0?0:1));
+            model.addAttribute("total_page",rentInfo.getTotalData()/10+(rentInfo.getTotalData()%10==0?0:1));
             model.addAttribute("user",user.getUserName());
             return "admin/main";
         }else if (status == 3 ) {
@@ -43,7 +43,7 @@ public class UserController {
             PageResult<RentInfo> rentInfo = rentinfoService.getRentInfo();
             model.addAttribute("data",rentInfo.getItems());
             model.addAttribute("this_page",1);
-            model.addAttribute("total_page",rentInfo.getTotalData()/10+(rentInfo.getTotalData()/10==0?0:1));
+            model.addAttribute("total_page",rentInfo.getTotalData()/10+(rentInfo.getTotalData()%10==0?0:1));
             model.addAttribute("user",user.getUserName());
             return "user/main";
         }

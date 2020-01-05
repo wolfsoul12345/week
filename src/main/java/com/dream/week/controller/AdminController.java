@@ -1,5 +1,6 @@
 package com.dream.week.controller;
 
+import com.dream.week.entity.PageResult;
 import com.dream.week.pojo.RentInfo;
 import com.dream.week.pojo.User;
 import com.dream.week.service.AdminService;
@@ -24,10 +25,14 @@ public class AdminController {
 //
     @PostMapping("find_info")
     public String find_info(@RequestParam Map<String,Object> map , Model model){
-        List<RentInfo> info = adminService.find_info(map);
-        model.addAttribute("data",info);
+        PageResult<RentInfo> info = adminService.find_info(map);
+        model.addAttribute("data",info.getItems());
+        //this_page存放当前页
+        model.addAttribute("this_page",1);
+        model.addAttribute("total_page",info.getTotalData()/10+(info.getTotalData()%10==0?0:1));
         model.addAttribute("user",map.get("userName"));
-        return "admin/main";
+        model.addAttribute("userName",map.get("userName"));
+        return "admin/search_result";
     }
 
     @GetMapping("admin_check")

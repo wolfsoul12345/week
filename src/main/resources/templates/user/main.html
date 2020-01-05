@@ -55,23 +55,23 @@
     <ul class="pagination">
 
         <li class="page-item" th:if="${this_page != 1 }">
-            <a class="page-link" th:href="@{'page_info?page='+${this_page-1}}" aria-label="Previous">
+            <a class="page-link" th:href="@{'page_info?userName='+${user}+'&page='+${this_page-1}}" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>
 
-        <div th:each="count:${#numbers.sequence(1,total_page)}" style="border: none">
+        <div th:each="count:${#numbers.sequence(1,total_page)}" >
             <li class="page-item active"  th:if="${count}==${this_page}" >
-                <a class="page-link" th:href="@{'page_info?page='+${count}}" th:text="${count}"></a>
+                <a class="page-link" th:href="@{'page_info?userName='+${user}+'&page='+${count}}" th:text="${count}"></a>
             </li>
             <li class="page-item" th:if="${count}!=${this_page}">
-                <a class="page-link" th:href="@{'page_info?page='+${count}}" th:text="${count}"></a>
+                <a class="page-link" th:href="@{'page_info?userName='+${user}+'&page='+${count}}" th:text="${count}"></a>
             </li>
 
         </div>
 
         <li th:if="${this_page != total_page}" class="page-item">
-            <a class="page-link" th:href="@{'page_info?page='+${this_page+1}}" aria-label="Next">
+            <a class="page-link" th:href="@{'page_info?userName='+${user}+'&page='+${this_page+1}}" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
             </a>
         </li>

@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import tk.mybatis.mapper.entity.Example;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -21,6 +22,17 @@ public class RentInfoService {
     private RentInfoMapper rentInfoMapper;
 
     //获取所有租房信息
+    public void addRentInfo(RentInfo rentInfo ,MultipartFile file){
+        rentInfo.setImg("image/"+file.getOriginalFilename());
+        rentInfo.setDate(new Date());
+        try {
+            UpLoadUtils.upload( file,file.getOriginalFilename(),"C:/img");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        rentInfoMapper.insert(rentInfo);
+    }
+
     public PageResult<RentInfo> getRentInfo(){
         //调用分页助手开启分页 第一页 10条
         PageHelper.startPage(1,10);
@@ -30,16 +42,6 @@ public class RentInfoService {
         PageInfo<RentInfo> pageInfo = new PageInfo<>(rentInfos);
         //返回PageResult 包含总条数和数据
         return new PageResult<>(pageInfo.getTotal(),pageInfo.getList());
-    }
-
-    public void addRentInfo(RentInfo rentInfo ,MultipartFile file){
-        rentInfo.setImg("image/"+file.getOriginalFilename());
-        try {
-            UpLoadUtils.upload( file,file.getOriginalFilename(),"C:/img");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        rentInfoMapper.insert(rentInfo);
     }
 
     public RentInfo getDetail(Integer id) {
